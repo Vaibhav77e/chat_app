@@ -102,7 +102,11 @@ class _ChatPageState extends State<ChatPage> {
                     : MainAxisAlignment.start,
             children: [
               Text(data['senderEmail']),
-              ChatBubble(message: data['message'])
+              ChatBubble(
+                  color: (data['senderId'] == _firebaseAuth.currentUser!.uid)
+                      ? Colors.green
+                      : Colors.blue,
+                  message: data['message'])
               //  Text(data['message']),
             ]),
       ),
