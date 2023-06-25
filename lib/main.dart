@@ -1,4 +1,5 @@
 import 'package:chat_app/firebase_options.dart';
+import 'package:chat_app/home.dart';
 import 'package:chat_app/pages/signIn.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         routes: {
           SignIn.routeNamed: (context) => SignIn(),
           Login.routeNamed: (context) => Login(),
+          Home.routeNamed: (context) => Home(),
         },
       ),
     );
