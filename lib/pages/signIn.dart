@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import '../widgets/myTextField.dart';
 import '../widgets/cusButto.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
+  static const routeNamed = '/signIn';
+
+  SignIn({super.key});
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmpasswordController =
       TextEditingController();
-  static const routeNamed = '/signIn';
-
-  SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {

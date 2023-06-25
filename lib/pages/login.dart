@@ -1,13 +1,33 @@
 import 'package:flutter/material.dart';
 import '../widgets/myTextField.dart';
 import '../widgets/cusButto.dart';
+import 'package:provider/provider.dart';
+import '../auth_gate/firebase_methods.dart';
 
-class Login extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+class Login extends StatefulWidget {
   static const routeNamed = '/login';
 
   Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+
+  void logIn() async {
+    try {
+      Provider.of<FirebaseMethods>(context, listen: false)
+          .signInwithEmailandPass(
+              emailController.text.trim(), passwordController.text.trim());
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +71,7 @@ class Login extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              CusButton(onTapFn: () {}, text: 'LogIn'),
+              CusButton(onTapFn: logIn, text: 'LogIn'),
               const SizedBox(
                 height: 40,
               ),
