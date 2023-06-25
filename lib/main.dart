@@ -1,3 +1,4 @@
+import 'package:chat_app/pages/signIn.dart';
 import 'package:flutter/material.dart';
 import './home.dart';
 import './pages/login.dart';
@@ -18,7 +19,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      //home: Login(),
+      home: SignIn(),
+      routes: {
+        SignIn.routeNamed: (context) => SignIn(),
+        Login.routeNamed: (context) => Login(),
+      },
     );
   }
 }
